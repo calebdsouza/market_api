@@ -1,6 +1,7 @@
 Types::MutationType = GraphQL::ObjectType.define do
   name "Mutation"
 
+  # expose create Product 
   field :createProduct, function: Mutations::CreateProduct.new
   # TODO: Remove me
   # field :testField, types.String do
