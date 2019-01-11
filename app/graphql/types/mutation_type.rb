@@ -1,3 +1,4 @@
+# Defines new GraphQL Type, Mutation
 Types::MutationType = GraphQL::ObjectType.define do
   name "Mutation"
 
