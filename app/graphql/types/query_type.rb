@@ -1,3 +1,5 @@
+# Define a new GraphQL type, Query
+
 Types::QueryType = GraphQL::ObjectType.define do
   name "Query"
 

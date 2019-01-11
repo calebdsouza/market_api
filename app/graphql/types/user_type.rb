@@ -1,4 +1,4 @@
-# Define a new GraphQL type, UserType
+# Define a new GraphQL type, User
 Types::UserType = GraphQL::ObjectType.define do
     # Set this GraphQL type's name to 'User'
     name 'User'
