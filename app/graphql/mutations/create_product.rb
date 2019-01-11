@@ -1,3 +1,4 @@
+# Mutation resolver to create a new Product
 class Mutations::CreateProduct < GraphQL::Function
     # Arguments passed as 'args' needed to create a new product
     argument :title, !types.String
