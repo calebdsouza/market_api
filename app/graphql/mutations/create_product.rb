@@ -5,14 +5,15 @@ class Mutations::CreateProduct < GraphQL::Function
     argument :price, !types.Float
     argument :inventory_count, !types.Int
     
-    # Return type from the mutation of Product
+    # Return type from the mutation of Product node
     type Types::ProductType
 
-    # the mutataion method for creating a new Product
+    # The mutataion method for creating a new Product
     # _obj - parent object, which in this case is nil
     # args - arguments passed (title, price, inventory_count)
     # _ctx - GraphQL context
     def call(_obj, args, _ctx)
+        # Create new Product
         Product.create!(
             title: args[:title],
             price: args[:price],
