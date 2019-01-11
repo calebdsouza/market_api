@@ -5,6 +5,7 @@ class Mutations::CreateProductTest < ActiveSupport::TestCase
         Mutations::CreateProduct.new.call(nil, args, {})
     end
 
+    # Test creating a standard valid Product
     test 'creating new product' do
         link = preform(
             title: 'Chocolate Bar',

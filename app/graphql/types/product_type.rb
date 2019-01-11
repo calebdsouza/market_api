@@ -1,4 +1,4 @@
-# Defines new GraphQL type, ProductType
+# Defines new GraphQL type, Product
 Types::ProductType = GraphQL::ObjectType.define do
     # Set this type's name to 'Product'
     name 'Product'
