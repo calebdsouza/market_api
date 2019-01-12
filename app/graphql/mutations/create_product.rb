@@ -5,7 +5,7 @@ class Mutations::CreateProduct < GraphQL::Function
     argument :price, !types.Float
     argument :inventory_count, !types.Int
     
-    # Return type from the mutation of Product node
+    # Define return type from the mutation of Product node
     type Types::ProductType
 
     # The mutataion method for creating a new Product

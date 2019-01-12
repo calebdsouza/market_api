@@ -11,7 +11,7 @@ class Mutations::CreateUser < GraphQL::Function
     argument :name, !types.String
     argumnet :authProvider, !AuthProviderInput
 
-    # Return type for the mutation of User node
+    # Define return type for the mutation of User node
     type Types:: UserType
 
     # The mutation method for creating a new User

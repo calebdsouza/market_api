@@ -9,4 +9,3 @@ Types::ProductType = GraphQL::ObjectType.define do
     field :price, !types.Float
     field :inventory_count, !types.Int
 end
-
