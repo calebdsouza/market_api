@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class Mutations::SignInUserTest < ActiveSupport::TestCase
-    def preform(args = {})
-        Mutations::SignInUser.nwe.call(nil, args, {cookies: {}})
+    def perform(args = {})
+        Mutations::SignInUser.new.call(nil, args, {cookies: {}})
     end
 
     setup do
@@ -10,7 +10,7 @@ class Mutations::SignInUserTest < ActiveSupport::TestCase
     end
     
     test 'create a token' do
-        result = preform(
+        result = perform(
             email: {
                 email: @user.email,
                 password: @user.password
