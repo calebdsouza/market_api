@@ -67,3 +67,6 @@ gem 'graphiql-rails', '1.4.4', group: :development
 
 # Bcrypt - encryption
 gem 'bcrypt', '~> 3.1.7'
+
+# JWT
+gem 'json_web_token'
