@@ -7,7 +7,7 @@ class Mutations::CreateProductTest < ActiveSupport::TestCase
 
     # Test creating a standard valid Product
     test 'creating new product' do
-        link = preform(
+        product = preform(
             title: 'Chocolate Bar',
             price: 3.25,
             inventory_count: 50,
