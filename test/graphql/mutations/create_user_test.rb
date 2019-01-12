@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Mutations::CreateUserTest < ActiveSupport::TestCase
     def preform(args = {})
-        Mutations::CreateUser.call(nil, args, nil)
+        Mutations::CreateUser.new.call(nil, args, nil)
     end
 
     # Test creating a standard vaild User
