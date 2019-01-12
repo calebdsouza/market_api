@@ -15,7 +15,7 @@ class Mutations::CreateProductTest < ActiveSupport::TestCase
 
         assert product.persisted?
         assert_equal product.title, 'Chocolate Bar'
-        assert_equal product.price, 3.23
+        assert_equal product.price, 3.25
         assert_equal product.inventory_count, 50
     end
 end
