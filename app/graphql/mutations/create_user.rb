@@ -4,12 +4,12 @@ class Mutations::CreateUser < GraphQL::Function
     AuthProviderInput = GraphQL::InputObjectType.define do
         name 'AuthProviderSignupData'
 
-        argument: email, Types::AuthProviderEmailInput
+        argument :email, Types::AuthProviderEmailInput
     end
 
     # Arguments passed as 'args' needed tp create a new User
     argument :name, !types.String
-    argumnet :authProvider, !AuthProviderInput
+    argument :authProvider, !AuthProviderInput
 
     # Define return type for the mutation of User node
     type Types:: UserType
