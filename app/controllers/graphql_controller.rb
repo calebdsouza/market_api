@@ -4,14 +4,23 @@ class GraphqlController < ApplicationController
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      # Query context goes here, for example:
-      # current_user: current_user,
+      # Querry context; session and current User
+      session: session[:token],
+      current_user: current_user
     }
     result = ShopifyApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
   end
 
   private
+  
+  # Get current User from token stored in the sesssion
+  def current_user 
+    return unless session[:token]
+    AuthToken.verify(session[:token])
+    
+  end
+
 
   # Handle form data, JSON body, or a blank value
   def ensure_hash(ambiguous_param)
