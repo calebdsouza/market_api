@@ -5,7 +5,7 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {
       # Querry context; session and current User
-      session: session[:token],
+      session: session,
       current_user: current_user
     }
     result = ShopifyApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
