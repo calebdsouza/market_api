@@ -14,8 +14,8 @@ class Mutations::SignInUser < GraphQL::Function
     # The mutation method for signing in a User
     # _obj - parent object, which in this case is nil
     # args - arguments passed (email)
-    # _ctx - GraphQL API User context
-    def call(_obj, args, _ctx)
+    # ctx - GraphQL API User context
+    def call(_obj, args, ctx)
         # Current unauthenticed user's email
         input_email = args[:email]
 
@@ -28,10 +28,15 @@ class Mutations::SignInUser < GraphQL::Function
         return unless user
         return unless user.authenticate(input_email[:password])
 
+        # Get JWT and added to session
+        token = AuthToken.issue(user)
+        ctx[:session] = {token: token}
+        print ctx[:session][:token]
+
         # Package jwt
         OpenStruct.new({
             user: user,
-            token: AuthToken.issue(user)
+            token: token
         })
     end
 end
