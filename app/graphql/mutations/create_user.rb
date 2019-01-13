@@ -18,7 +18,7 @@ class Mutations::CreateUser < GraphQL::Function
     # _obj - parent object, which in this case is nil
     # args - arguments passed (name, email, password)
     # _ctx - GraphQL Context
-    def call(_obj, args, ctx)
+    def call(_obj, args, _ctx)
         # Create new User
         User.create!(
             name: args[:name],
