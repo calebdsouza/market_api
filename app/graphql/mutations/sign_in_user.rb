@@ -31,7 +31,6 @@ class Mutations::SignInUser < GraphQL::Function
         # Get JWT and added to session
         token = AuthToken.issue(user)
         ctx[:session] = {token: token}
-        print ctx[:session][:token]
 
         # Package jwt
         OpenStruct.new({
