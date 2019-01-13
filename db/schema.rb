@@ -13,12 +13,12 @@
 ActiveRecord::Schema.define(version: 2019_01_12_204858) do
 
   create_table "carts", force: :cascade do |t|
+    t.integer "product_id"
     t.integer "user_id"
-    t.decimal "total_price"
-    t.integer "product_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "user_id", name: "index_cart_on_user_id"
+    t.index ["product_id"], name: "index_carts_on_product_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
