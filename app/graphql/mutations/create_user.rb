@@ -4,7 +4,7 @@ class Mutations::CreateUser < GraphQL::Function
     AuthProviderInput = GraphQL::InputObjectType.define do
         name 'AuthProviderSignupData'
 
-        argument :email, Types::AuthProviderEmailInput
+        argument :credentials, Types::AuthProviderCredInput
     end
 
     # Arguments passed as 'args' needed tp create a new User
@@ -22,8 +22,8 @@ class Mutations::CreateUser < GraphQL::Function
         # Create new User
         User.create!(
             name: args[:name],
-            email: args[:authProvider][:email][:email],
-            password: args[:authProvider][:email][:password]
+            email: args[:authProvider][:credentials][:email],
+            password: args[:authProvider][:credentials][:password]
         )
     end
 end
