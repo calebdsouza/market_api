@@ -10,7 +10,7 @@ class Mutations::CreateUserTest < ActiveSupport::TestCase
         user = preform(
             name: 'Test User',
             authProvider: {
-                email: {
+                credentials: {
                     email: 'myTestEmail@example.com',
                     password: '[omitted]'
                 }

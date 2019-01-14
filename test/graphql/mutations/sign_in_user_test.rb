@@ -11,7 +11,7 @@ class Mutations::SignInUserTest < ActiveSupport::TestCase
     
     test 'create a token' do
         result = perform(
-            email: {
+            credentials: {
                 email: @user.email,
                 password: @user.password
             }
