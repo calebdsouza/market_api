@@ -18,7 +18,6 @@ class GraphqlController < ApplicationController
   def current_user 
     return unless session[:token]
     AuthToken.verify(session[:token])
-    
   end
 
 
