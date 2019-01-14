@@ -14,6 +14,7 @@ Types::MutationType = GraphQL::ObjectType.define do
   # Cart Mutations
     # Create new empty Cart
   field :createCart, function: Mutations::CreateCart.new
+  
   # TODO: Remove me
   # field :testField, types.String do
   #   description "An example field added by the generator"
