@@ -1,7 +1,7 @@
 # Mutation resolver to sign in a User
 class Mutations::SignInUser < GraphQL::Function
     # Arguments passed as 'args' needed to sign in a User
-    argument :email, !Types::AuthProviderEmailInput
+    argument :credentials, !Types::AuthProviderCredInput
 
     # Define return type for the mutation of Sign In User
     type do
@@ -17,9 +17,9 @@ class Mutations::SignInUser < GraphQL::Function
     # ctx - GraphQL API User context
     def call(_obj, args, ctx)
         # Current unauthenticed user's email
-        input_email = args[:email]
+        input_email = args[:credentials]
 
-        # Check if given email is validate
+        # Check if given email is valid
         return unless input_email
 
         # If given email is valid then find User with related email
