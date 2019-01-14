@@ -17,16 +17,16 @@ class Mutations::SignInUser < GraphQL::Function
     # ctx - GraphQL API User context
     def call(_obj, args, ctx)
         # Current unauthenticed user's email
-        input_email = args[:credentials]
+        credentials = args[:credentials]
 
         # Check if given email is valid
-        return unless input_email
+        return unless credentials
 
         # If given email is valid then find User with related email
-        user = User.find_by email: input_email[:email]
+        user = User.find_by email: credentials[:email]
         # Confirm the User found is correct
         return unless user
-        return unless user.authenticate(input_email[:password])
+        return unless user.authenticate(credentials[:password])
 
         # Get JWT and added to session
         token = AuthToken.issue(user)
