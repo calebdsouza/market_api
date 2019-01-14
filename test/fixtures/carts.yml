@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  product: one
   user: one
+  total_price: 20.30
+  product_count: 3
 
 two:
-  product: two
   user: two
+  total_price: 32.02
+  product_count: 1
