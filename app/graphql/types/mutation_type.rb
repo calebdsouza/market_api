@@ -14,6 +14,12 @@ Types::MutationType = GraphQL::ObjectType.define do
   # Cart Mutations
     # Create new empty Cart
   field :createCart, function: Mutations::CreateCart.new
+    # Add product to Cart
+  field :addProductToCart, function: Mutations::AddProductToCart.new
+    # Delete product from Cart
+  field :deleteProductFromCart, function: Mutations::DeleteProductFromCart.new
+    # Checkout Cart
+  field :confirmCart, function: Mutations::ConfirmCart.new
   
   # TODO: Remove me
   # field :testField, types.String do
