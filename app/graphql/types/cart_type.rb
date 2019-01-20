@@ -7,6 +7,6 @@ Types::CartType = GraphQL::ObjectType.define do
     field :id, !types.ID
     field :user, -> {Types::UserType}
     field :total_price, !types.Float 
-    field :product_count, !types.Int 
-
+    field :product_count, !types.Int
+    field :products, -> {!types[Types::ProductType]}
 end
