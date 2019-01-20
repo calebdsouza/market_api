@@ -13,14 +13,23 @@ class Mutations::CreateCart < GraphQL::Function
     # args - arguments passed (user)
     # ctx - Session context
     def call(_obj, args, ctx)
-        user = User.find_by(ctx[:current_user])
-        print user
-        
+        cart = Cart.find_by user: ctx[:current_user]
+        # Check if the user already has a cart
+        unless !cart
+            return GraphQL::ExecutionError.new(
+                "This User alredy has a Cart: #{cart[:id]}")
+        end 
         # Create a new empty Cart
         Cart.create!(
-            user: user,
+            user: ctx[:current_user],
             total_price: INIT_TOTAL_PRICE,
             product_count: INIT_PROD_COUNT
         )
+
+        # Catch all validation errors
+    rescue ActiveRecord::RecordInvalid => e
+        GraphQL::ExecutionError.new("Invalid input: #{
+            e.record.errors.full_messages.join(', ')
+            }")
     end
 end

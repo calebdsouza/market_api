@@ -25,6 +25,12 @@ class Mutations::CreateUser < GraphQL::Function
             email: args[:authProvider][:credentials][:email],
             password: args[:authProvider][:credentials][:password]
         )
+
+        # Catch all validation errors
+    rescue ActiveRecord::RecordInvalid => e
+        GraphQL::ExecutionError.new("Invalid input: #{
+            e.record.errors.full_messages.join(', ')
+            }")
     end
 end
  
