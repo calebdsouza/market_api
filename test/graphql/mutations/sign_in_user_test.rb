@@ -22,14 +22,20 @@ class Mutations::SignInUserTest < ActiveSupport::TestCase
     end
     
     test 'handling no credentials' do
-    assert_nil perform
+        assert_raises(GraphQL::ExecutionError) do
+            perform()
+        end
     end
 
     test 'handling wrong email' do
-    assert_nil perform(email: { email: 'wrong' })
+        assert_raises(ActiveRecord::RecordNotFound) do
+            perform(credentials: { email: 'wrong' })
+        end
     end
 
     test 'handling wrong password' do
-    assert_nil perform(email: { email: @user.email, password: 'wrong' })
+        assert_raises() do
+            perform(credentials: { email: @user.email, password: 'wrong' })
+        end
     end
 end

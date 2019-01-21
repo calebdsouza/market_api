@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Mutations::CreateProductTest < ActiveSupport::TestCase
     def preform(args = {})
-        Mutations::CreateProduct.new.call(nil, args, {})
+        Mutations::CreateProduct.new.call(nil, args, {cookies: {}})
     end
 
     # Test creating a standard valid Product

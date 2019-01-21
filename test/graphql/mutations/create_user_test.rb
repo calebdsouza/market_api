@@ -12,7 +12,7 @@ class Mutations::CreateUserTest < ActiveSupport::TestCase
             authProvider: {
                 credentials: {
                     email: 'myTestEmail@example.com',
-                    password: '[omitted]'
+                    password: 'test'
                 }
             }
         )
