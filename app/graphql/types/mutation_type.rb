@@ -21,11 +21,4 @@ Types::MutationType = GraphQL::ObjectType.define do
     # Checkout Cart
   field :confirmCart, function: Mutations::ConfirmCart.new
   
-  # TODO: Remove me
-  # field :testField, types.String do
-  #   description "An example field added by the generator"
-  #   resolve ->(obj, args, ctx) {
-  #     "Hello World!"
-  #   }
-  # end
 end
