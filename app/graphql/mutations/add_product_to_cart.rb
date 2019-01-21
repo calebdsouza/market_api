@@ -15,12 +15,12 @@ class Mutations::AddProductToCart < GraphQL::Function
         # Check if product id is valid
         product = Product.find_by(id: args[:product_id])
         unless product
-            return GraphQL::ExecutionError.new("Product not found")
+            raise GraphQL::ExecutionError.new("Product not found")
         end 
 
         # Check if the product quantity wanted is valid
         unless (args[:quantity] <= product[:inventory_count])
-            return GraphQL::ExecutionError.new(
+            raise GraphQL::ExecutionError.new(
                 "Given quantity exceeds avalibale quantity of #{
                     product[:inventory_count]
                 }")
@@ -29,7 +29,7 @@ class Mutations::AddProductToCart < GraphQL::Function
         # Get the current User's Cart
         cart = Cart.find_by(user: ctx[:current_user])
         unless cart
-            return GraphQL::ExecutionError.new("User's Cart not found")
+            raise GraphQL::ExecutionError.new("User's Cart not found")
         end
 
         # Check if Product to be added is already in User's Cart

@@ -21,19 +21,19 @@ class Mutations::ConfirmCart < GraphQL::Function
         user = User.find_by email: ctx[:current_user][:email]
         # Confirm the User found is valid
         unless user
-            return GraphQL::ExecutionError.new("No User found")
+            raise GraphQL::ExecutionError.new("No User found")
         end 
             
         # Confirm the given password is valid
         unless user.authenticate(args[:password])
-            return GraphQL::ExecutionError.new("Invalid credentials")
+            raise GraphQL::ExecutionError.new("Invalid credentials")
         end 
 
         # Get the current User's Cart info
         cart = Cart.find_by(user: ctx[:current_user])
         # Check if the Cart exists
         unless cart
-            return GraphQL::ExecutionError.new("User's Cart not found")
+            raise GraphQL::ExecutionError.new("User's Cart not found")
         end 
 
         total_price = cart[:total_price]

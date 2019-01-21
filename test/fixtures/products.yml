@@ -1,11 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  price: 9.99
-  inventory_count: 1
+  title: Chocolate
+  price: 1.75
+  inventory_count: 10
 
 two:
-  title: MyString
-  price: 9.99
-  inventory_count: 1
+  title: Bike
+  price: 95.99
+  inventory_count: 5
+
+three:
+  title: Car
+  price: 1200.32
+  inventory_count: 0

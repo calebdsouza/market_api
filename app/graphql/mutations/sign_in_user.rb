@@ -18,22 +18,25 @@ class Mutations::SignInUser < GraphQL::Function
     def call(_obj, args, ctx)
         # Current unauthenticed user's email and password credentials
         credentials = args[:credentials]
+        unless credentials
+            raise GraphQL::ExecutionError.new("Missing credentials")
+        end
 
         # If given email is valid then find User with related email
         user = User.find_by! email: credentials[:email]
         # Confirm the User found is correct
         unless user
-            return GraphQL::ExecutionError.new('User not found')
+            raise GraphQL::ExecutionError.new('User not found')
         end
         
         # Check if the User provide valid credentials
         unless user.authenticate(credentials[:password])
-            return GraphQL::ExecutionError.new('Invalid password')
+            raise GraphQL::ExecutionError.new('Invalid password')
         end
 
         # Get JWT and added to session
         token = AuthToken.issue(user)
-        ctx[:session][:token] = token
+        ctx[:session] = {toekn: token}
 
         # Package jwt
         OpenStruct.new({

@@ -16,27 +16,27 @@ class Mutations::DeleteProductFromCart < GraphQL::Function
         # Check if given Product ID is valid
         product = Product.find_by(id: args[:product_id])
         unless product
-            return GraphQL::ExecutionError.new('Product not found')
+            raise GraphQL::ExecutionError.new('Product not found')
         end
 
         # Get the current User's Cart and check if one exists
         cart = Cart.find_by(user: ctx[:current_user])
         unless cart
-            return GraphQL::ExecutionError.new(
+            raise GraphQL::ExecutionError.new(
                 "User's Cart not found. Check if User Created a Cart")
         end
        
         # Check if Product is in the User's Cart
         cartProduct = CartsProducts.find_by(cart: cart, product: product)
         unless cartProduct
-            return GraphQL::ExecutionError.new("Product is not in this User's Cart")
+            raise GraphQL::ExecutionError.new("Product is not in this User's Cart")
         end
 
         # Check if the user what's to do a full delete or partial delete
         if args[:quantity]
             # Check if the given quantity is valid
             unless (args[:quantity] <= cartProduct[:quantity])
-                return GraphQL::ExecutionError.new(
+                raise GraphQL::ExecutionError.new(
                     "Given quantity exceeds avalibale quantity of #{cartProduct[:quantity]}")
             end
 

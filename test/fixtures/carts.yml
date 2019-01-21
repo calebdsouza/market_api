@@ -2,8 +2,8 @@
 
 one:
   user: one
-  total_price: 20.30
-  product_count: 3
+  total_price: 0.00
+  product_count: 0
 
 two:
   user: two

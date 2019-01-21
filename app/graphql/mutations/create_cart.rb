@@ -16,7 +16,7 @@ class Mutations::CreateCart < GraphQL::Function
         cart = Cart.find_by user: ctx[:current_user]
         # Check if the user already has a cart
         unless !cart
-            return GraphQL::ExecutionError.new(
+            raise GraphQL::ExecutionError.new(
                 "This User alredy has a Cart: #{cart[:id]}")
         end 
         # Create a new empty Cart
