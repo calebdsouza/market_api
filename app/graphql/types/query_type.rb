@@ -2,12 +2,7 @@
 Types::QueryType = GraphQL::ObjectType.define do
   name "Query"
 
-  field :allProducts, !types[Types::ProductType] do
-    description "Resolve all products in this database"
-    resolve -> (obj, args, ctx) {
-      Product.all
-    }
-  end
+  field :allProducts, function: Resolvers::ProductsSearch
 
   field :allUsers, !types[Types::UserType] do
     description "Resolve all users in this database"
