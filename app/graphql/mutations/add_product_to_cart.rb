@@ -26,6 +26,10 @@ class Mutations::AddProductToCart < GraphQL::Function
                 }")
         end 
 
+        unless (args[:quantity] <= 0)
+            raise GraphQL::ExecutionError.new("Cannot add a negative or error quantity")
+        end 
+
         # Get the current User's Cart
         cart = Cart.find_by(user: ctx[:current_user])
         unless cart
