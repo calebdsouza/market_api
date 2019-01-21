@@ -13,6 +13,14 @@ class Mutations::CreateProduct < GraphQL::Function
     # args - arguments passed (title, price, inventory_count)
     # _ctx - GraphQL context
     def call(_obj, args, _ctx)
+        unless args[:price]
+            raise GraphQL::ExecutionError.new('Price cannot be negative')
+        end
+
+        unless args[:inventory_count]
+            raise GraphQL::ExecutionError.new('Product cnnot have negative inventory')
+        end
+
         # Create new Product
         Product.create!(
             title: args[:title],
