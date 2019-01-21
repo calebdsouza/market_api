@@ -39,9 +39,9 @@ mutation {
         }
     }
     ) {
-    id
-    name
-    email
+        id
+        name
+        email
     }
 }
 ```
@@ -54,12 +54,12 @@ mutation {
         password: "password"
     }
     ) {
-    user {
-        id
-        name
-        email
-    }
-    token
+        user {
+            id
+            name
+            email
+        }
+        token
     }
 }
 ```
@@ -73,19 +73,19 @@ mutation {
     createCart(
 
     ) {
-    user {
-        id
-        name
-        email
-    }
-    products {
-        id
-        title
-        price
-        inventory_count
-    }
-    product_count
-    total_price
+        user {
+            id
+            name
+            email
+        }
+        products {
+            id
+            title
+            price
+            inventory_count
+        }
+        product_count
+        total_price
     }
 }
 ```
@@ -129,17 +129,17 @@ mutation {
         total_price
         product_count
         user {
-        id
-        name
-        email
+            id
+            name
+            email
         }
         products {
-        id
-        title
-        price
-        inventory_count
+            id
+            title
+            price
+            inventory_count
+        }
     }
-  }
 }
 ```
 
@@ -292,3 +292,14 @@ query {
     }
 }
 ```
+
+## Testing
+To run tests...
+```bash
+rake test
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
